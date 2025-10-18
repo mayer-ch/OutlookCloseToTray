@@ -70,7 +70,7 @@ namespace CloseToTray
             string outlookVersion = GetOutlookVersion();
             using (RegistryKey mttKey = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\Microsoft\\Office\\{outlookVersion}\\Outlook\\Preferences", true))
             {
-                if ((int)mttKey.GetValue("MinToTray") != 1)
+                if ((int?)mttKey.GetValue("MinToTray") != 1)
                 {
                     mttKey.SetValue("MinToTray", 1);
                     return true;
